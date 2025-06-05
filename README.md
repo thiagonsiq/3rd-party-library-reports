@@ -36,4 +36,4 @@ Run the PowerShell script: `./third-party-reports.ps1`
 
 The script will run through each report and save the output in the folder name provided.
 
-There are some improvements that can be made to this, like running the reports in parallel, or accepting some of the inputs programatically rather than hard coding it, and probably more. However, for now, this is the amount of time I was willing to put into this!
+There are some improvements that can be made to this, like running the reports in parallel, maybe providing an option to choose which reports to run, and probably others. However, for now, this is the amount of time I was willing to put into this! Feel free to use it if you have similar needs.
