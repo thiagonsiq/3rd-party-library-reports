@@ -1,19 +1,19 @@
 # 3rd Party Library Reports
 
 ## Description
-Managing third-party dependencies across large projects can get messy. Tools like npm, dotnet, and license-checker give you great diagnostics, but their JSON outputs aren't exactly easy to share with a compliance team, non-technical stakeholders, or Excel-centric processes. 
+Maintaining third-party dependencies across large projects can be hard. Tools like npm, dotnet, and others give you pretty good diagnostics, but their JSON outputs aren't exactly easy to share with a compliance team, non-technical stakeholders, or Excel-centric processes. 
 
-Recently, I needed to figure out libraries in our application that were outdated, that had known vulnerabilities, and their licenses information (if any). There wasn't a single tool that could do that, much less across npm and NuGet packages. And the tools that are available have different outputs, which made for messy reports.
+Recently, I needed to know libraries in our application that were outdated, that had known vulnerabilities, and information about their licenses. There wasn't a single tool that could do that, much less across npm and NuGet packages. The tools that are available have different outputs, which made for messy reports.
 
-I put together this script, which does a few things:
+As a result, I put together this script, which does a few things:
 - Runs multiple CLI tools across JavaScript and .NET projects
 - Captures outdated packages, vulnerabilities and license information
-- Converts all the output into clean, timestamped CSV files (that was my need, but can also just output JSON instead if needed - or both)
+- Converts all the output into clean, timestamped CSV files (that was my need, but it can also just output JSON if needed - or both)
 - For ease of use, I also automated the process via PowerShell a bit, so that all reports run together from start to finish
-- There are a few checks in place for existence of the tools we need to use, if not present, some are installed and others need to be installed by the user
+- Lastly, I added a few checks to verify required tools and directories are present
 
 ## Configuration
-This tool needs two files to work properly:
+The tool needs two files:
 - `third-party-reports.ps1` - This is the orchestrator. It can be changed, but currently runs:
   - npm audit
   - npm outdated
@@ -24,15 +24,16 @@ This tool needs two files to work properly:
 
 Place the `third-party-reports.ps1` and `json-to-csv-helper.js` files in a directory, preferably in (or near) the place where your solution files are located.
 
-Open the `third-party-reports.ps1` and update the configuration variables:
+Open `third-party-reports.ps1` and update the configuration variables:
 - outputFolderName: Name of folder where reports will be saved
 - dotnetSolutionName: Name of specific dotnet solution file to report on (for NuGet commands)
 - dotnetFolderRelPath: Relative path of where dotnet solution is located (eg: `../App`)
 - npmFolderRelPath: Relative path of where npm libraries are located (eg: `../App/FrontEnd`)
 - jsonToCsvRelPath: Relative path of where json to csv helper is located (If kept alongside the PowerShell script, no change is needed here. Otherwise, provide relative path like the others)
+
 ## Usage
-Run the powershell script: `./third-party-reports.ps1`
+Run the PowerShell script: `./third-party-reports.ps1`
 
 The script will run through each report and save the output in the folder name provided.
 
-There are some improvements that can be made to this, like running the reports in parallel for instance, or accepting some of the inputs via input questions. For now, this will do the trick!
+There are some improvements that can be made to this, like running the reports in parallel, or accepting some of the inputs programatically rather than hard coding it, and probably more. However, for now, this is the amount of time I was willing to put into this!
