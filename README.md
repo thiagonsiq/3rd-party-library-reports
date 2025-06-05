@@ -20,9 +20,9 @@ This tool needs two files to work properly:
   - license-checker
   - dotnet list --outdated and --vulnerable
   - nuget-license
-- `json-to-csv.js` - This is the JSON to CSV parser, as the name implies. It handles converting JSON to CSV for the above report outputs (outdated, vulnerabilities, license).
+- `json-to-csv-helper` - This is the JSON to CSV parser, as the name implies. It handles converting JSON to CSV for the above report outputs (outdated, vulnerabilities, license).
 
-Place the `third-party-reports.ps1` and `json-to-csv.js` files in a directory, preferably in (or near) the place where your solution files are located.
+Place the `third-party-reports.ps1` and `json-to-csv-helper` files in a directory, preferably in (or near) the place where your solution files are located.
 
 Open the `third-party-reports.ps1` and update the configuration variables:
 - outputFolderName: Name of folder where reports will be saved
