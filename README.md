@@ -12,7 +12,7 @@ I put together this script, which does a few things:
 - For ease of use, I also automated the process via PowerShell a bit, so that all reports run together from start to finish
 - There are a few checks in place for existence of the tools we need to use, if not present, some are installed and others need to be installed by the user
 
-## Installation
+## Usage
 This tool needs two files to work properly:
 - `third-party-inventory.ps1` - This is the orchestrator. It can be changed, but currently runs:
   - npm audit
@@ -22,7 +22,17 @@ This tool needs two files to work properly:
   - nuget-license
 - `json-to-csv.js` - This is the JSON to CSV parser, as the name implies. It handles converting JSON to CSV for the above report outputs (outdated, vulnerabilities, license).
 
-The PowerShell script is configured to run from anywhere using absolute paths. You decide what reports you want to run, and provide the path where those libraries can be found and where the output should be saved.
+Place the `third-party-inventory.ps1` and `json-to-csv.js` files in a directory, preferably in (or near) the place where your solution files are located.
 
+Open the `third-party-inventory.ps1` and update the configuration variables:
+- outputFolderName: Name of folder where reports will be saved
+- dotnetSolutionName: Name of specific dotnet solution file to report on (for NuGet commands)
+- dotnetFolderRelPath: Relative path of where dotnet solution is located (eg: `../App`)
+- npmFolderRelPath: Relative path of where npm libraries are located (eg: `../App/FrontEnd`)
+- jsonToCsvRelPath: Relative path of where json to csv helper is located (If kept alongside the PowerShell script, no change is needed here. Otherwise, provide relative path like the others)
 
+Run the powershell script: `./third-party-inventory.ps1`
 
+The script will run through each report and save the output in the folder name provided.
+
+There are some improvements that can be made to this, like running the reports in parallel for instance, or accepting some of the inputs via input questions. For now, this will do the trick!
