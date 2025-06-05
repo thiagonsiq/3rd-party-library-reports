@@ -12,7 +12,7 @@ I put together this script, which does a few things:
 - For ease of use, I also automated the process via PowerShell a bit, so that all reports run together from start to finish
 - There are a few checks in place for existence of the tools we need to use, if not present, some are installed and others need to be installed by the user
 
-## Usage
+## Configuration
 This tool needs two files to work properly:
 - `third-party-reports.ps1` - This is the orchestrator. It can be changed, but currently runs:
   - npm audit
@@ -30,7 +30,7 @@ Open the `third-party-reports.ps1` and update the configuration variables:
 - dotnetFolderRelPath: Relative path of where dotnet solution is located (eg: `../App`)
 - npmFolderRelPath: Relative path of where npm libraries are located (eg: `../App/FrontEnd`)
 - jsonToCsvRelPath: Relative path of where json to csv helper is located (If kept alongside the PowerShell script, no change is needed here. Otherwise, provide relative path like the others)
-
+## Usage
 Run the powershell script: `./third-party-reports.ps1`
 
 The script will run through each report and save the output in the folder name provided.
