@@ -14,7 +14,7 @@ I put together this script, which does a few things:
 
 ## Usage
 This tool needs two files to work properly:
-- `third-party-inventory.ps1` - This is the orchestrator. It can be changed, but currently runs:
+- `third-party-reports.ps1` - This is the orchestrator. It can be changed, but currently runs:
   - npm audit
   - npm outdated
   - license-checker
@@ -22,16 +22,16 @@ This tool needs two files to work properly:
   - nuget-license
 - `json-to-csv.js` - This is the JSON to CSV parser, as the name implies. It handles converting JSON to CSV for the above report outputs (outdated, vulnerabilities, license).
 
-Place the `third-party-inventory.ps1` and `json-to-csv.js` files in a directory, preferably in (or near) the place where your solution files are located.
+Place the `third-party-reports.ps1` and `json-to-csv.js` files in a directory, preferably in (or near) the place where your solution files are located.
 
-Open the `third-party-inventory.ps1` and update the configuration variables:
+Open the `third-party-reports.ps1` and update the configuration variables:
 - outputFolderName: Name of folder where reports will be saved
 - dotnetSolutionName: Name of specific dotnet solution file to report on (for NuGet commands)
 - dotnetFolderRelPath: Relative path of where dotnet solution is located (eg: `../App`)
 - npmFolderRelPath: Relative path of where npm libraries are located (eg: `../App/FrontEnd`)
 - jsonToCsvRelPath: Relative path of where json to csv helper is located (If kept alongside the PowerShell script, no change is needed here. Otherwise, provide relative path like the others)
 
-Run the powershell script: `./third-party-inventory.ps1`
+Run the powershell script: `./third-party-reports.ps1`
 
 The script will run through each report and save the output in the folder name provided.
 
