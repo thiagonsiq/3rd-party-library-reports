@@ -1,13 +1,3 @@
-/**
- * json-to-csv-helper.js
- *
- * This module provides utility functions for converting JSON data to CSV format.
- *
- * Usage:
- *   cat input.json | json-to-csv-helper.js <mode> [output.csv]
- *
- */
-
 const fs = require('fs');
 
 function toCsv(rows, headers) {
@@ -16,7 +6,7 @@ function toCsv(rows, headers) {
   return lines.join('\n');
 }
 
-// Each function takes the raw JSON data and returns an array of objects with the desired structure
+// Each function takes the raw JSON data and returns an array of objects with the given structure
 function flattenNpmOutdated(data) {
   return Object.entries(data || {}).map(([pkg, info]) => ({
     Package: pkg,
