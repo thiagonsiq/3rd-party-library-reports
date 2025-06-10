@@ -1,6 +1,6 @@
 # 3rd Party Library Reports
 
-See my blog article about this tool on my website: [https://www.tsiqueira.com/blog/automating-dependency-audits](https://www.tsiqueira.com/blog/automating-dependency-audits)
+Article discussing background and providing some context: [https://www.tsiqueira.com/blog/automating-dependency-audits](https://www.tsiqueira.com/blog/automating-dependency-audits)
 
 ## Description
 Maintaining third-party dependencies across large projects can be hard. Tools like npm, dotnet, and others give you pretty good diagnostics, but their JSON outputs aren't exactly easy to share with a compliance team, non-technical stakeholders, or Excel-centric processes. 
